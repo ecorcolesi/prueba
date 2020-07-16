@@ -39,6 +39,7 @@ jobs:
         with:
           # Establecemos argumentos al kubectl
           # deployment/my-app(nombre del deployment que va a estar en el cluster de kubernetes)(tiene que estar creado si no esto fallará)
+          # hay que fijarse en el deployment.yaml que he hecho
           args: set image --record deployment/my-app my-app=everecidocker/prueba:${{ github.sha }}
          
         # Le añadimos otro paso para hacer para verificar que el deployment esta corriendo con un rollout
@@ -49,3 +50,8 @@ jobs:
           KUBECTL_VERSION: "1.15"
         with:
           args: '"rollout status deployment/my-app"'
+# una vez instalado todo
+# entro el pod, previamente he hecho un kubectl get pods, he instalo curl
+# kubectl exec -it my-app-66b8679588-jnhrt apk add curl
+# hago un cuirl a localhost para ver que esta corriendo
+# kubectl exec -it my-app-66b8679588-jnhrt curl localhost
