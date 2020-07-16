@@ -42,10 +42,10 @@ jobs:
           args: set image --record deployment/my-app prueba=everecidocker/prueba:${{ github.sha }}
          
         # Le añadimos otro paso para hacer para verificar que el deployment esta corriendo con un rollout
-        - name: verify deployment
-          uses: steebchen/kubectl@master
-          env:
-            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-            KUBECTL_VERSION: "1.15"
-          with:
-            args: '"rollout status deployment/my-app"'    
+      - name: verify deployment
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBECTL_VERSION: "1.15"
+        with:
+          args: '"rollout status deployment/my-app"'    
