@@ -22,7 +22,7 @@ jobs:
           # coje el nombre del repotory(prueba)
           repository: ${{ github.repository }} 
           # cuando construye la imagen la tagea con la ref y con el sha de docker
-          tag_with_ref: true
+          tag_with_ref: false
           tag_with_sha: true
           # cuando construye la imagen la tagea con el sha de git que es mas larga
           tags: ${{github.sha}}
