@@ -3,17 +3,18 @@ on: push
 name: deploy
 jobs:
   deploy:
-    name: deploy to cluster kebernetes
+    name: deploy to cluster kubernetes
     # el dropet, makina virtual donde va a correr esto, hemos elegido la ultima version de ubuntu
     runs-on: ubuntu-latest
-    steps:
-      # actions(repositorio donde estan las acciones de github)
-      # Primera accion, hace un checout de la rama master
-      - uses: actions/checkout@master
-      - name: build and push to docker
+    steps: # cada name es un paso/accion
+      # Primera accion, hace un checkout de la rama master
+      - name: checkout del master
+        # actions(repositorio donde estan las acciones de github)
+        uses: actions/checkout@master
 
-      # docker(repositorio donde estan las acciones de docker)
-      # Segunda paso, hacer un build y un push con la verision 1
+      # Segundo paso, hacer un build y un push con la verision 1
+      - name: build and push to docker
+        # docker(repositorio donde estan las acciones de docker)
         uses: docker/build-push-action@v1
         # lo usamos pasar variables
         with:
@@ -28,8 +29,8 @@ jobs:
           # cuando construye la imagen la tagea con el sha de git que es mas larga
           tags: ${{github.sha}}
 #-------- hasta aqui lo que hemos hecho generado una imgen docker y la hemos subido a DockerHub
-# Le añadimos otro paso para hacer el deply en el cluster de kubernetes
-# https://github.com/marketplace/actions/kubernetes-cli-kubectl
+      
+
 
 
 
