@@ -29,17 +29,17 @@ jobs:
           # cuando construye la imagen la tagea con el sha de git que es mas larga
           tags: ${{github.sha}}
 #-------- hasta aqui lo que hemos hecho generado una imgen docker y la hemos subido a DockerHub
-        # Le añadimos otro paso para hacer el deploy en el cluster de kubernetes
-        
-        - name: deploy to cluster
-          uses: steebchen/kubectl@master
-          env:
-            # establecemos el contenido en base64 del archivo que permite a kubectl conectar con el cluster(~/.kube/config)
-            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-          with:
-            # Establecemos argumentos al kubectl
-            # deployment/my-app(nombre del deployment que va a estar en el cluster de kubernetes)(tiene que estar creado si no esto fallará)
-            args: set image --record deployment/my-app prueba=everecidocker/prueba:${{ github.sha }}
+      # Le añadimos otro paso para hacer el deploy en el cluster de kubernetes
+      # https://github.com/marketplace/actions/kubernetes-cli-kubectl  
+      - name: deploy to cluster
+        uses: steebchen/kubectl@master
+        env:
+          # establecemos el contenido en base64 del archivo que permite a kubectl conectar con el cluster(~/.kube/config)
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
+          # Establecemos argumentos al kubectl
+          # deployment/my-app(nombre del deployment que va a estar en el cluster de kubernetes)(tiene que estar creado si no esto fallará)
+          args: set image --record deployment/my-app prueba=everecidocker/prueba:${{ github.sha }}
          
         # Le añadimos otro paso para hacer para verificar que el deployment esta corriendo con un rollout
         - name: verify deployment
