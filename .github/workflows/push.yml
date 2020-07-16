@@ -17,8 +17,8 @@ jobs:
         uses: docker/build-push-action@v1
         # lo usamos pasar variables
         with:
-          username: ${{ secret.DOCKER_USERNAME }} 
-          password: ${{ secret.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }} 
+          password: ${{ secrets.DOCKER_PASSWORD }}
           # coje el nombre del repotory(prueba)
           repository: ${{ github.repository }} 
           # cuando construye la imagen la tagea con la ref y con el sha de docker
