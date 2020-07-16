@@ -39,7 +39,7 @@ jobs:
         with:
           # Establecemos argumentos al kubectl
           # deployment/my-app(nombre del deployment que va a estar en el cluster de kubernetes)(tiene que estar creado si no esto fallará)
-          args: set image --record deployment/my-app prueba=everecidocker/prueba:${{ github.sha }}
+          args: set image --record deployment/my-app my-app-5755b5d4fd-tdrps=everecidocker/prueba:${{ github.sha }}
          
         # Le añadimos otro paso para hacer para verificar que el deployment esta corriendo con un rollout
       - name: verify deployment
