@@ -30,7 +30,6 @@ jobs:
           tags: ${{github.sha}}
 #-------- hasta aqui lo que hemos hecho generado una imgen docker y la hemos subido a DockerHub
         # Le añadimos otro paso para hacer el deploy en el cluster de kubernetes
-        # https://github.com/marketplace/actions/kubernetes-cli-kubectl
         
         - name: deploy to cluster
           uses: steebchen/kubectl@master
