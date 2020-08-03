@@ -1,10 +1,11 @@
-# cuando hagamos un push en github se va realizar edte job
+# El nombre del fichero push.yml pude ser otro
+# cuando hagamos un push en github se va realizar este job
 on: push
 name: deploy
 jobs:
   deploy:
     name: deploy to cluster kubernetes
-    # el dropet, makina virtual donde va a correr esto, hemos elegido la ultima version de ubuntu
+    # el droplet, maquina virtual donde va a correr esto, hemos elegido la ultima version de ubuntu
     runs-on: ubuntu-latest
     steps: # cada name es un paso/accion
       # Primera accion, hace un checkout de la rama master
@@ -12,7 +13,7 @@ jobs:
         # actions(repositorio donde estan las acciones de github)
         uses: actions/checkout@master
 
-      # Segundo paso, hacer un build y un push con la verision 1
+      # Segundo paso, hacer un build y un push con la version 1
       - name: build and push to docker
         # docker(repositorio donde estan las acciones de docker)
         uses: docker/build-push-action@v1
@@ -54,4 +55,5 @@ jobs:
 # entro el pod, previamente he hecho un kubectl get pods, he instalo curl
 # kubectl exec -it my-app-66b8679588-jnhrt apk add curl
 # hago un cuirl a localhost para ver que esta corriendo
-# kubectl exec -it my-app-66b8679588-jnhrt curl localhost
+# kubectl exec -it my-app-67bf85fff-jzjfq curl localhost(deprecated)
+# kubectl exec -it my-app-67bf85fff-jzjfq -- curl localhost
