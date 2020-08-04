@@ -56,4 +56,4 @@ jobs:
 # kubectl exec -it my-app-66b8679588-jnhrt apk add curl
 # hago un cuirl a localhost para ver que esta corriendo
 # kubectl exec -it my-app-67bf85fff-jzjfq curl localhost(deprecated)
-# kubectl exec -it my-app-67bf85fff-jzjfq -- curl localhost
+# kubectl exec -it my-app-675846fb9d-9hjlx -- curl localhost
