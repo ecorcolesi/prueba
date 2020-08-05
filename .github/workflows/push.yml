@@ -36,6 +36,8 @@ jobs:
         uses: steebchen/kubectl@master
         env:
           # establecemos el contenido en base64 del archivo que permite a kubectl conectar con el cluster(~/.kube/config)
+          # cat ~/.kube/config | base64
+          # lo que nos de el comando anterior lo metemeos en lso secretes de github de nuestro repo https://github.com/ecorcolesi/prueba/settings/secrets
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
           # Establecemos argumentos al kubectl
@@ -57,3 +59,4 @@ jobs:
 # hago un cuirl a localhost para ver que esta corriendo
 # kubectl exec -it my-app-67bf85fff-jzjfq curl localhost(deprecated)
 # kubectl exec -it my-app-675846fb9d-9hjlx -- curl localhost
+# kubectl exec -it my-app-65c7464db5-mrx4w -- curl localhost
