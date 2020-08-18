@@ -1,0 +1,59 @@
+Notas a tener en cuenta
+
+0. Si queremos usar terraform...
+    0.1. eliminamos todo lo de terraform
+    >rm -rf *terraform*
+    0.2. inicialimos terraform
+    >terraform init
+    0.3. Creamos unicamente el cluster(01-main.tf) y el dns(04-dns.tf)
+    >terraform apply 
+
+1. Se supone que tenemos creada la infraestructura:
+    - el dominio testeatest.es(hostalia) apuntado a DigitalOcean
+    - Cluster de Kubernetes(01-main.tf):
+        # creamos el cluster y un pool para crear nodos dentro del cluster
+        resource "digitalocean_kubernetes_cluster" "cluster_evereci" {
+            name    = "evereci"
+            region  = "sfo2"
+            version = "1.18.6-do.0"
+
+            
+            node_pool {
+                name       = "evereci-nodes"
+                size       = "s-1vcpu-2gb"
+                # En principio creamos 1 Nodo Worker
+                node_count = 1
+                tags = ["evereci-nodes"]
+            }
+        }
+    - El DNS en DigitalOcean(04-dns.tf):
+        # Creamos un dominio nuevo
+        resource "digitalocean_domain" "testeatest" {
+            name = "testeatest.es"
+        }
+
+        resource "digitalocean_record" "www" {
+            domain = "${digitalocean_domain.testeatest.name}"
+            type   = "A"
+            # este es el hostname
+            name   = "www"
+            ttl    = "3600"
+            value  = "${digitalocean_loadbalancer.public.ip}"
+        }
+
+2. Una vez que este creado el cluster nos bajamos el fichero de configuracion y lo ponemos en ~./kube/config para poder concetar al cluster con kubectl
+    2.1 establecemos el contenido en base64 del archivo que permite a kubectl conectar con el cluster(~/.kube/config)
+    2.2 cat ~/.kube/config | base64
+    2.3 lo que nos de el comando anterior lo metemos en los secrets de github de nuestro repo https://github.com/ecorcolesi/prueba/settings/secrets
+
+3. Creamos el servicio NodePort(01_service_nodePort.yaml)
+>kubectl apply -f 01_service_nodePort.yaml
+
+4. Creamos el servicio NodePort(01_service_nodePort.yaml)
+>kubectl apply -f 02_deployment.yaml
+5. Realizamos cualquier cambio en el proyecto y hacemos un:
+>git add .
+>git commit m "Cambios...."
+>git push origin master
+# una vez que ha terminado de ejcutarse el job push.yml, se supone que esta desplegado en el cluster..
+6. Creamos el LoadBalance para que apunte al pod que acabamos de desplegar
