@@ -60,3 +60,4 @@ jobs:
 # kubectl exec -it my-app-67bf85fff-jzjfq curl localhost(deprecated)
 # kubectl exec -it my-app-675846fb9d-9hjlx -- curl localhost
 # kubectl exec -it my-app-77f44d88db-gv5rr -- curl localhost
+# kubectl exec -it my-app-744bc65997-vwjbw -- curl localhost

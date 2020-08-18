@@ -10,7 +10,6 @@ spec:
     - port: 80 
       targetPort: 80 #... al puerto 80 del Pod
       nodePort: 30000 # .. Apuntando al puerto 30000 del NodoWorker que a su vez apunta...al puerto 80 del Pod 
-      
   selector:
     app: my-app
     tier: web
