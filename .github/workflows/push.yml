@@ -52,7 +52,7 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBECTL_VERSION: "1.15"
         with:
-          args: '"rollout status deployment/my-app"'
+          args: '"rollout status deployment/my-app-deployment"'
 # una vez instalado todo
 # entro el pod, previamente he hecho un kubectl get pods, he instalo curl
 # kubectl exec -it my-app-66b8679588-jnhrt apk add curl

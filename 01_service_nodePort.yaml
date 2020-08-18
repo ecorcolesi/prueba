@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
     - port: 80 # puerto del pod
-      targetPort: 80 #... apunta al containerPort
+      targetPort: 4200 #... apunta al containerPort
       nodePort: 30000 # .. todo lo que venga al puerto 30000 del NodoWorker lo apuntas al puerto 80 del pod
   selector:
     app: my-app

@@ -19,5 +19,5 @@ spec:
       - name: my-app
         image: everecidocker/prueba:lastest
         ports:
-        - containerPort: 80
+        - containerPort: 4200
           name: my-app

@@ -1,5 +1,17 @@
 Notas a tener en cuenta
 
+------------------------------------------------------------------------------------------------------------------------------
+# front-end
+1. hacemos un git init
+>git init
+>git clone https://github.com/ecorcolesi/front-end.git
+Ya que he hecho un repositorio privado...
+Para no tener que estar metiendo usuario/password he geneado un tocken de acceso 
+token de acceso(dada768df2fb70e2984860c4965cf4e4ca767684) 
+dentro del directorio front-end hacemos:
+>git remote set-url origin https://ecorcolesi:dada768df2fb70e2984860c4965cf4e4ca767684@github.com/ecorcolesi/prueba.git
+------------------------------------------------------------------------------------------------------------------------------
+
 0. Si queremos usar terraform...
     0.1. eliminamos todo lo de terraform
     >rm -rf *terraform*
