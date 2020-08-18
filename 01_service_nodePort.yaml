@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app
+  name: my-app-service
   labels:
     app: my-app
 spec:
   ports:
-    # Puerto 80 que viene de internet...
-    - port: 80 
-      targetPort: 80 #... al puerto 80 del Pod
-      nodePort: 30000 # .. Apuntando al puerto 30000 del NodoWorker que a su vez apunta...al puerto 80 del Pod 
+    - port: 80 # puerto del pod
+      targetPort: 80 #... apunta al containerPort
+      nodePort: 30000 # .. todo lo que venga al puerto 30000 del NodoWorker lo apuntas al puerto 80 del pod
   selector:
     app: my-app
     tier: web
