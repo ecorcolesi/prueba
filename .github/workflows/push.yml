@@ -59,4 +59,4 @@ jobs:
 # hago un cuirl a localhost para ver que esta corriendo
 # kubectl exec -it my-app-67bf85fff-jzjfq curl localhost(deprecated)
 # kubectl exec -it my-app-675846fb9d-9hjlx -- curl localhost
-# kubectl exec -it my-app-65c7464db5-mrx4w -- curl localhost
+# kubectl exec -it my-app-77f44d88db-gv5rr -- curl localhost

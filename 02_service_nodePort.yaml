@@ -8,10 +8,8 @@ spec:
   ports:
     # Puerto 80 que viene de internet...
     - port: 80 
-      # .. Apuntando al puerto 80 del NodoWorker que a su vez apunta...
-      nodePort: 30000
-      #... al puerto 80 del Pod
-      targetPort: 80
+      targetPort: 80 #... al puerto 80 del Pod
+      nodePort: 30000 # .. Apuntando al puerto 30000 del NodoWorker que a su vez apunta...al puerto 80 del Pod 
       
   selector:
     app: my-app
