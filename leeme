@@ -9,7 +9,7 @@ Ya que he hecho un repositorio privado...
 Para no tener que estar metiendo usuario/password he geneado un tocken de acceso 
 token de acceso(dada768df2fb70e2984860c4965cf4e4ca767684) 
 dentro del directorio front-end hacemos:
->git remote set-url origin https://ecorcolesi:dada768df2fb70e2984860c4965cf4e4ca767684@github.com/ecorcolesi/prueba.git
+>git remote set-url origin https://ecorcolesi:c9aa50cb1ccaf711fb1a184793761c022aa6e743@github.com/ecorcolesi/prueba.git
 ------------------------------------------------------------------------------------------------------------------------------
 
 0. Si queremos usar terraform...
